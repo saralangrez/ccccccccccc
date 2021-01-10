@@ -91,6 +91,11 @@ from six import string_types
         </div>
       </div>
 
+  <header class="course-profile">
+    <div class="intro-inner-wrapper">
+      <div class="table">
+      <section class="intro">
+
         <div class="main-cta">
         %if user.is_authenticated and registered:
           %if show_courseware_link:
@@ -138,6 +143,27 @@ from six import string_types
           <div id="register_error"></div>
         %endif
         </div>
+        %endif
+        </div>
+
+      </section>
+      % if get_course_about_section(request, course, "video"):
+      <a href="#video-modal" class="media" rel="leanModal">
+        <div class="hero">
+          <img src="${course_image_urls['large']}" alt="" />
+          <div class="play-intro"></div>
+        </div>
+      </a>
+      %else:
+      <div class="media">
+        <div class="hero">
+          <img src="${course_image_urls['large']}" alt="" />
+        </div>
+      </div>
+      % endif
+    </div>
+      </div>
+  </header>
 
 
   <header class="course-profile">
