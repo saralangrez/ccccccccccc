@@ -91,7 +91,6 @@ from six import string_types
         </div>
       </div>
 
-<button style="display: block; width: 100%; border: none; background-color: #4CAF50; color: white; padding: 14px 28px; font-size: 16px; cursor: pointer; text-align: center;">
         <div class="main-cta">
         %if user.is_authenticated and registered:
           %if show_courseware_link:
@@ -139,18 +138,17 @@ from six import string_types
           <div id="register_error"></div>
         %endif
         </div>
-	</button>
 
   <header class="course-profile">
     <div class="intro-inner-wrapper">
       <div class="table">
       <section class="intro">
         <div class="heading-group">
-          <h1>
-            ${course.display_name_with_default}
-          </h1>
-          <br />
-          <span>${course.display_org_with_default}</span>
+         <div class="media">
+          <div class="hero">
+           <img src="${course_image_urls['large']}" alt=""/>
+          </div>
+         </div>
         </div>
 
         <div class="main-cta">
