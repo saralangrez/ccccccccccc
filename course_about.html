@@ -63,18 +63,33 @@ from six import string_types
   <%block name="course_about_header">
 
           <h1>
-            ${course.display_name_with_default}	
+            <b>${course.display_name_with_default}</b>	
           </h1>
-          <br/>
-          <h2>
+          <h1>
             ${get_course_about_section(request, course, 'short_description')}
-          </h2>
+          </h1>
+          <h2>
+	    <em> by <span>${course.display_org_with_default}</span></em>
+	  </h2>
           <br/>
 
-          <p> starts : <h3> ${course.start} </h3> </p>
+          <p> Starts : <p id="coursestartdate"></p></p>
+	  <p> Ends : <p id="courseenddate"></p></p>
+	  <script>
+	    var d = new Date("${course.start}");
+	    document.getElementById("coursestartdate").innerHTML = d.toDateString();
+	  </script>
+	  <script>
+	    var d = new Date("${course.end}");
+	    document.getElementById("courseenddate").innerHTML = d.toDateString();
+	  </script>
           <br/>
 
-	  <img src="https://prod-discovery.edx-cdn.org/media/course/image/0e575a39-da1e-4e33-bb3b-e96cc6ffc58e-8372a9a276c1.small.png" alt=""/>
+      <div class="media">
+        <div class="hero">
+          <img src="${course_image_urls['large']}" alt=""/>
+        </div>
+      </div>
 
         <div class="main-cta">
         %if user.is_authenticated and registered:
